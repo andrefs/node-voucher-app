@@ -1,0 +1,11 @@
+{
+  "name": "node-voucher-app",
+  "version": "0.0.1",
+  "description": "A demo app consisting of a voucher API and a simple web frontend to use it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "André Santos",
+  "license": "ISC"
+}
