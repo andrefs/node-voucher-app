@@ -4,8 +4,9 @@
   "description": "A demo app consisting of a voucher API and a simple web frontend to use it",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "nodemon server/server-entry.js"
+    "dev:server": "nodemon server/server-entry.js",
+    "test": "npm-run-all test:run",
+    "test:run": "NODE_ENV=test mocha -S --compilers js:babel-core/register --recursive ./test/server"
   },
   "keywords": [
     "voucher",
@@ -33,9 +34,15 @@
     "babel-register": "6.9.0",
     "debug": "2.2.0",
     "express": "4.13.4",
+    "md5": "2.1.0",
     "mongoose": "4.4.17"
   },
   "devDependencies": {
-    "nodemon": "1.9.2"
+    "chai": "3.5.0",
+    "chai-datetime": "1.4.1",
+    "mocha": "2.4.5",
+    "nodemon": "1.9.2",
+    "npm-run-all": "2.1.1",
+    "sinon": "1.17.4"
   }
 }
