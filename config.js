@@ -3,4 +3,7 @@ module.exports = {
         port: 9667,
         host: 'localhost'
     },
+    db: {
+        uri: 'mongodb://localhost/voucher_dev'
+    },
 };

@@ -1,4 +1,6 @@
 import express  from 'express';
+import db       from './db';
+import async    from 'async';
 import config   from '../config';
 let debug = require('debug')('server');
 
@@ -11,8 +13,20 @@ app.get('/status', (req, res) => {
     res.send('Server is running and accepting requests!');
 });
 
-app.listen(port, host, () => {
-    debug(`Server running on http://${host}:${port}`);
-});
+async.series([
+    function(next){ db.once('open', next); },
+    function(next){
+        debug(`Connected to MongoDB database!`);
+        app.listen(port,host, next);
+    }],
+    function(err){
+        if(err){
+            console.error.bind(console, 'Error:');
+            process.exit(1);
+        }
+        debug(`Server running on http://${host}:${port}`);
+    }
+);
+
 
 module.exports = app;
