@@ -32,6 +32,8 @@ var dependencies = [
  */
 gulp.task('vendor', function() {
     return gulp.src([
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/bootstrap/dist/js/bootstrap.js',
     ]).pipe(concat('vendor.js'))
         .pipe(gulpif(production, uglify({ mangle: false })))
         .pipe(gulp.dest('public/js'));
@@ -126,9 +128,22 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch('client/stylesheets/main.less', ['styles']);
+    gulp.watch('node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*', ['bs-fonts']);
 });
 
 
-gulp.task('default', ['styles', 'vendor', 'browserify-watch', 'watch']);
-gulp.task('build',   ['styles', 'vendor', 'browserify']);
+/*
+ |--------------------------------------------------------------------------
+ | Compile Bootstrap fonts
+ |--------------------------------------------------------------------------
+ */
+
+gulp.task('bs-fonts', function() {
+    return gulp.src('node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*')
+    .pipe(gulp.dest('public/fonts'));
+});
+
+
+gulp.task('default', ['styles', 'bs-fonts', 'vendor', 'browserify-watch', 'watch']);
+gulp.task('build',   ['styles', 'bs-fonts', 'vendor', 'browserify']);
 
