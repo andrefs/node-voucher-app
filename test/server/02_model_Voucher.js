@@ -2,9 +2,6 @@ import Voucher from '../../server/models/Voucher';
 import Campaign from '../../server/models/Campaign';
 require('./test_helper');
 
-
-
-
 describe('Voucher Model', () => {
     it('should save new voucher in database', (done) => {
         Campaign.create({id:'CAMP'}, (err, createdCamp) => {
