@@ -1,13 +1,13 @@
-import bodyParser from 'body-parser';
+import express from 'express';
 import Voucher from '../models/Voucher';
+import checkAuth from '../middlewares/auth';
 
 module.exports = function(app){
 
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended:false}));
+    let router = express.Router();
 
-    app.route('/api/vouchers/:code')
-    .get(function(req, res){
+
+    router.get('/:code', checkAuth({read:['vouchers']}), function(req, res){
         const query = {
             code: req.params.code
         };
@@ -47,8 +47,7 @@ module.exports = function(app){
         });
     });
 
-    app.route('/api/vouchers/:code')
-    .patch(function(req, res){
+    router.patch('/:code', checkAuth({write:['vouchers']}), function(req, res){
         if(req.body.action === 'use'){
             Voucher.use(req.params.code, (err) => {
                 if(err){
@@ -67,4 +66,5 @@ module.exports = function(app){
         }
     });
 
+    app.use('/api/vouchers',router);
 };

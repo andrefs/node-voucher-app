@@ -6,4 +6,8 @@ module.exports = {
     db: {
         uri: 'mongodb://localhost/voucher_test'
     },
+    auth: {
+        allowUnauthWrites: true,
+        allowUnauthReads: true
+    }
 };

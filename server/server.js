@@ -1,10 +1,14 @@
 import express  from 'express';
+import bodyParser from 'body-parser';
 import db       from './db';
 import async    from 'async';
 import config   from '../config';
 let debug = require('debug')('server');
 
 let app = new express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
 const port = process.env.PORT || (config && config.server && config.server.port) ? config.server.port : 9667;
 const host = process.env.HOST || (config && config.server && config.server.host) ? config.server.host : 'localhost';
 

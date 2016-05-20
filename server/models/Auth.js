@@ -19,8 +19,12 @@ var AuthSchema = mongoose.Schema({
     },
     token: String,
     canWrite: {
-        type: Boolean,
+        type: mongoose.Schema.Types.Mixed,
         default: false
+    },
+    canRead: {
+        type: mongoose.Schema.Types.Mixed,
+        default: true
     }
 });
 
