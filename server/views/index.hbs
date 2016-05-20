@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>node-voucher-app</title>
+        <link rel="shortcut icon" type="image/png" href="favicon.ico">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/main.css"/>
+    </head>
+    <body>
+        <div id="app">
+            <!-- This extra div seems stupid, but prevents React conflicts between browser vs server rendering -->
+            <div>{{{ html }}}<div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            window.__INITIAL_STATE__ = {{{initialState}}};
+        </script>
+        <script src="/js/vendor.js"></script>
+        <script src="/js/vendor.bundle.js"></script>
+        <script src="/js/bundle.js"></script>
+    </body>
+</html>
