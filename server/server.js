@@ -13,6 +13,10 @@ app.get('/status', (req, res) => {
     res.send('Server is running and accepting requests!');
 });
 
+
+// api routing
+require('./routes/vouchers')(app);
+
 async.series([
     function(next){ db.once('open', next); },
     function(next){

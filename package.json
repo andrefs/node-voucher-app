@@ -32,6 +32,7 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-stage-0": "6.5.0",
     "babel-register": "6.9.0",
+    "body-parser": "1.15.1",
     "debug": "2.2.0",
     "express": "4.13.4",
     "md5": "2.1.0",
@@ -43,6 +44,7 @@
     "mocha": "2.4.5",
     "nodemon": "1.9.2",
     "npm-run-all": "2.1.1",
-    "sinon": "1.17.4"
+    "sinon": "1.17.4",
+    "supertest": "1.2.0"
   }
 }
