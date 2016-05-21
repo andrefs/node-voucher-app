@@ -24,6 +24,17 @@ var dependencies = [
     'react-router'
 ];
 
+/*
+ |--------------------------------------------------------------------------
+ | Copy images
+ |--------------------------------------------------------------------------
+ */
+gulp.task('images', function(){
+    return gulp.src([
+        'client/images/*'
+    ])
+    .pipe(gulp.dest('public/img'));
+});
 
 /*
  |--------------------------------------------------------------------------
@@ -144,6 +155,6 @@ gulp.task('bs-fonts', function() {
 });
 
 
-gulp.task('default', ['styles', 'bs-fonts', 'vendor', 'browserify-watch', 'watch']);
-gulp.task('build',   ['styles', 'bs-fonts', 'vendor', 'browserify']);
+gulp.task('default', ['images','styles', 'bs-fonts', 'vendor', 'browserify-watch', 'watch']);
+gulp.task('build',   ['images','styles', 'bs-fonts', 'vendor', 'browserify']);
 
