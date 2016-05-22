@@ -7,13 +7,15 @@ import thunk from 'redux-thunk';
 
 import {combineReducers} from 'redux-immutable';
 import products          from '../reducers/products';
+import selectedProduct   from '../reducers/selectedProduct';
 
 const defaultInitialState = new Immutable.Map();
 
 export default function configStore(history, initialState = defaultInitialState){
     const reducer = combineReducers({
         routing : routerReducer,
-        products
+        products,
+        selectedProduct
     });
 
     let logger = createLogger({

@@ -16,14 +16,15 @@ class ProductsListContainer extends Component {
 
     render(){
         return (
-            <ProductsList />
+            <ProductsList {...this.props} />
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        products: state.get('products')
+        products: state.get('products'),
+        selectedProduct:  state.get('selectedProduct'),
     }
 }
 
