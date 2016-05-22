@@ -1,5 +1,5 @@
-import express from 'express';
-import Voucher from '../models/Voucher';
+import express   from 'express';
+import Voucher   from '../models/Voucher';
 import checkAuth from '../middlewares/auth';
 
 module.exports = function(app){
