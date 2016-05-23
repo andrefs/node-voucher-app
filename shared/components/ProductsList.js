@@ -22,16 +22,19 @@ class Products extends Component {
         return (
             <div className="container">
                 <h1>Products</h1>
-                <Link to={'/'}>Go back</Link>
+                <Link to={'/'}>Back to start</Link>
                 <Flash flash={flash} />
                 <Row className="marketing">
                     {products.map(prod =>
                         <Col lg={6} key={prod.get('id')} >
                             <Link className="product" to={'/buy/'+prod.get('id')}>
                             <div className="product-box">
-                                <h4>{prod.get('title')}</h4>
-                                <div>
+                                <h4 className="prod-title">{prod.get('title')}</h4>
+                                <div style={{position:'relative'}}>
                                     <img className="prod-img center-block" src={"/img/"+prod.get('image')} />
+                                    <p className="prod-price">
+                                    {(prod.get('price')/100).toFixed(2)+' '+prod.getIn(['currency','symbol'])}
+                                    </p>
                                 </div>
                                 <p className="prod-desc">{prod.get('description')}</p>
                             </div>

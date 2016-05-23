@@ -29,7 +29,7 @@ class Start extends React.Component {
                     </Col>
                     <Col lg={6}>
                         <h4>Vouchers</h4>
-                        <p>Or, if what you want is to have an overview of the vouchers, click here instead::</p>
+                        <p>Or, if what you want is to have an overview of the vouchers, click here instead:</p>
                         <LinkContainer to={'/vouchers'}>
                             <Button bsStyle="primary">See vouchers <Glyphicon glyph="tags" /></Button>
                         </LinkContainer>

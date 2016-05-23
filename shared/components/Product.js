@@ -65,13 +65,14 @@ class Product extends Component {
 
         return (
             <div className="container">
+                <Link to={'/products'}>Back to products</Link>
                 <Flash flash={flash} />
                 <Row className="marketing">
                     <Col lg={6} >
                         <h1>{selectedProduct.get('title')}</h1>
-                        <p className="prod-desc">{selectedProduct.get('description')}</p>
+                        <p className="prod-desc lead">{selectedProduct.get('description')}</p>
                         <div>
-                            <img className="prod-img center-block" src={"/img/"+selectedProduct.get('image')} />
+                            <img className="prod-img-big center-block" src={"/img/"+selectedProduct.get('image')} />
                         </div>
                     </Col>
                     <Col lg={6} >
