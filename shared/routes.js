@@ -4,6 +4,7 @@ import App     from './containers/App';
 import Start   from './components/Start';
 import ProductsListContainer from './containers/ProductsListContainer';
 import ProductContainer      from './containers/ProductContainer';
+import CampaignsListContainer from './containers/CampaignsListContainer';
 
 export default function routes(store) {
 
@@ -14,6 +15,7 @@ export default function routes(store) {
             <IndexRoute component={Start} />
             <Route path='/products'    component={ProductsListContainer} />
             <Route path='/buy/:id' component={ProductContainer}      />
+            <Route path='/campaigns'    component={CampaignsListContainer} />
         </Route>
     );
 };

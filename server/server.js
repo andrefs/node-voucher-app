@@ -32,6 +32,7 @@ app.use(express.static(__dirname+'/../public/')); // static files path
 // api routing
 require('./routes/vouchers')(app);
 require('./routes/products')(app);
+require('./routes/campaigns')(app);
 
 // Just to check if server is running ok
 app.get('/status', (req, res) => {

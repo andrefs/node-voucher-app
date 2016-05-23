@@ -61,6 +61,7 @@
     "jquery": "2.2.4",
     "md5": "2.1.0",
     "mongoose": "4.4.17",
+    "mongoose-paginate": "5.0.0",
     "morgan": "1.7.0",
     "react": "15.0.2",
     "react-bootstrap": "0.29.4",

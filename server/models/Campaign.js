@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 import async    from 'async';
 import md5      from 'md5';
 import Voucher  from './Voucher';
+import pagPlugin from 'mongoose-paginate';
 let debug = require('debug')('test');
+
+mongoose.plugin(pagPlugin);
 
 var CampaignSchema = mongoose.Schema({
     id: {

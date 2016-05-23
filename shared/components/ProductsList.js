@@ -5,7 +5,7 @@ import Row  from 'react-bootstrap/lib/Row';
 import Col  from 'react-bootstrap/lib/Col';
 import Flash from './Flash';
 
-class Products extends Component {
+class ProductsList extends Component {
 
     static propTypes = {
         products: PropTypes.instanceOf(Immutable.List).isRequired,
@@ -47,4 +47,4 @@ class Products extends Component {
     }
 }
 
-export default Products;
+export default ProductsList;
