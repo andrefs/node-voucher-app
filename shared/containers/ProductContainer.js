@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import {connect}            from 'react-redux';
 import Product from '../components/Product';
 import {setSelectedProduct} from '../actions/selectedProduct';
-
+import {bindActionCreators} from 'redux'
+import {fetchVoucher, useVoucher} from '../actions/voucher';
 
 @connect(
     mapStateToProps,
@@ -31,12 +32,15 @@ function mapStateToProps(state, ownProps) {
     return {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
+        voucher:  state.get('voucher'),
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        dispatch
+        dispatch,
+        fetchVoucher : bindActionCreators(fetchVoucher, dispatch),
+        useVoucher   : bindActionCreators(useVoucher, dispatch)
     }
 }
 

@@ -10,7 +10,7 @@ const initialState = new Immutable.List();
 export default function messages(state = initialState, action) {
     switch (action.type) {
     case PRODUCTS_FETCH_SUCCESS:
-        return state.merge(action.payload);
+        return Immutable.fromJS(action.payload);
 
     default:
         return state;
