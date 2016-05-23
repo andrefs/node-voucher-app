@@ -76,7 +76,7 @@ app.use(function(req, res){
                 layout       : false,
                 html         : html,
                 config       : JSON.stringify({
-                    apiBaseURL: 'http://'+config.api.host+':'+config.api.port,
+                    apiBaseURL: 'http://'+config.api.host+(config.api.port ? ':'+config.api.port : ''),
                     apiToken: config.api.token
                 }),
                 initialState : JSON.stringify(initialState)

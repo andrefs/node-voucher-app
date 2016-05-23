@@ -7,6 +7,10 @@
     "dev:server": "NODE_ENV=development nodemon server/server-entry.js",
     "dev:static": "gulp",
     "dev:initdb": "mongofixtures voucher_dev server/database/fixtures_dev.js",
+
+    "prod:static": "gulp -- build",
+    "prod:server": "NODE_ENV=production nodemon server/server-entry.js",
+
     "test": "npm-run-all test:run",
     "test:run": "NODE_ENV=test mocha -S --compilers js:babel-core/register --recursive ./test/server"
   },
