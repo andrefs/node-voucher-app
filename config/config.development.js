@@ -9,6 +9,6 @@ module.exports = {
     api: {
         port: 9667,
         host: 'localhost',
-        token: 'cbce539403f1a6dc08d9e564d68ee42f'
+        token: '740a8c8b3f5d5cf75c23eeb69e1bdbc0'
     }
 };

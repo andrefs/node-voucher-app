@@ -6,6 +6,7 @@
   "scripts": {
     "dev:server": "NODE_ENV=development nodemon server/server-entry.js",
     "dev:static": "gulp",
+    "dev:initdb": "mongofixtures voucher_dev server/database/fixtures_dev.js",
     "test": "npm-run-all test:run",
     "test:run": "NODE_ENV=test mocha -S --compilers js:babel-core/register --recursive ./test/server"
   },
@@ -86,6 +87,7 @@
     "mocha": "2.4.5",
     "nodemon": "1.9.2",
     "npm-run-all": "2.1.1",
+    "pow-mongodb-fixtures": "0.13.0",
     "sinon": "1.17.4",
     "supertest": "1.2.0"
   }

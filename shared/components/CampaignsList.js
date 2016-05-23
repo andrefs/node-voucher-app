@@ -14,7 +14,7 @@ class CampaignsList extends Component {
         const {campaigns, flash} = this.props;
 
         var infinity = (
-            <span class="inf-symbol">∞</span>
+            <span className="inf-symbol">∞</span>
         );
 
         return (

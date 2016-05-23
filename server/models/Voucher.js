@@ -54,10 +54,17 @@ VoucherSchema.pre('save', function(next){
 // static methods
 VoucherSchema.statics.use = function(code, callback) {
     const filter = {
-        code: code,
-        isActive: true,
-        usesLeft:{$gt: 0},
-        expires: {$gt: new Date()}
+        $or: [{
+            code: code,
+            isActive: true,
+            usesLeft:{$gt: 0},
+            expires: {$gt: new Date()}
+        },{
+            code: code,
+            isActive: true,
+            usesLeft:{$gt: 0},
+            isForever: true
+        }]
     };
     const update  = {$inc: {usesLeft: -1}};
     const options = {multi:false};

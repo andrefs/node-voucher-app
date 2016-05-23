@@ -14,7 +14,7 @@ class VouchersList extends Component {
         const {vouchers, flash} = this.props;
 
         var infinity = (
-            <span class="inf-symbol">∞</span>
+            <span className="inf-symbol">∞</span>
         );
 
         return (
@@ -34,11 +34,11 @@ class VouchersList extends Component {
                     </thead>
                     <tbody>
                     { vouchers.map(voucher =>
-                        <tr key={voucher.get('code')}>
+                        <tr key={voucher.get('code')} className={voucher.get('usesLeft') > 0 ? 'success' : 'danger'}>
                             <td>{voucher.get('code')}</td>
                             <td>{voucher.getIn(['campaign','id'])}</td>
                             <td>{voucher.get('isForever') ? infinity : voucher.get('expires').replace(/T/,' ')}</td>
-                            <td>{voucher.get('value')}</td>
+                            <td>{voucher.get('value')}{voucher.get('isRate') ? ' %' : null}</td>
                             <td>{voucher.get('usesLeft')}</td>
                         </tr>
                     )}
