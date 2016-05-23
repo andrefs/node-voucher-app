@@ -11,6 +11,7 @@ import InputGroup    from 'react-bootstrap/lib/InputGroup';
 import ListGroup     from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 import OrderDetails  from './OrderDetails';
+import Flash from './Flash';
 
 
 class Product extends Component {
@@ -21,7 +22,7 @@ class Product extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const voucherCode = this.refs.code.value;
+        const voucherCode = this.refs.code.value.toUpperCase();
         if(voucherCode !== ''){
             this.props.fetchVoucher(voucherCode);
         }
@@ -35,7 +36,7 @@ class Product extends Component {
     }
 
     render(){
-        const {selectedProduct, voucher} = this.props;
+        const {selectedProduct, voucher, flash} = this.props;
 
         const originalPrice = (selectedProduct && selectedProduct.get('id')) ? (+selectedProduct.get('price')/100) : '';
         const originalPriceStr = originalPrice ? originalPrice.toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']) : '';
@@ -58,11 +59,11 @@ class Product extends Component {
             }
         }
         const finalPriceStr = finalPrice ? finalPrice.toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']) : '';
-
-        console.log('XXXXXXXXXX 2', originalPrice, originalPriceStr, voucherDiscount, finalPrice, finalPriceStr);
+        const voucherError = (voucher && voucher.get('error')) ? voucher : null;
 
         return (
             <div className="container">
+                <Flash flash={flash} />
                 <Row className="marketing">
                     <Col lg={6} >
                         <h1>{selectedProduct.get('title')}</h1>
@@ -75,12 +76,12 @@ class Product extends Component {
                         <h1>Have a voucher?</h1>
                         <Form inline onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <input type="text" placeholder="Enter your voucher here" className="form-control input-lg" ref="code" />
+                                <input id="voucher-code" type="text" placeholder="Enter your voucher here" className="form-control input-lg" ref="code" />
                             </FormGroup>
                             {' '}
                             <Button type="submit" bsSize="lg" bsStyle="primary">Add</Button>
                         </Form>
-                        <OrderDetails originalPriceStr={originalPriceStr} voucherDiscount={voucherDiscount} finalPriceStr={finalPriceStr} />
+                        <OrderDetails originalPriceStr={originalPriceStr} voucherDiscount={voucherDiscount} finalPriceStr={finalPriceStr} voucherError={voucherError} />
                         <Button onClick={this.onClick} id="buy" type="submit" bsSize="large" className="pull-right" bsStyle="success">Buy</Button>
                     </Col>
                 </Row>

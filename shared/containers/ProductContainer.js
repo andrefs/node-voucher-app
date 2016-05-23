@@ -33,6 +33,7 @@ function mapStateToProps(state, ownProps) {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
         voucher:  state.get('voucher'),
+        flash: state.get('flash')
     }
 }
 

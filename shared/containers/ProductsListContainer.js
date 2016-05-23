@@ -25,6 +25,7 @@ function mapStateToProps(state) {
     return {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
+        flash: state.get('flash')
     }
 }
 

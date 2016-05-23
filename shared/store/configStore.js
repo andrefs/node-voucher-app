@@ -9,6 +9,7 @@ import {combineReducers} from 'redux-immutable';
 import products          from '../reducers/products';
 import selectedProduct   from '../reducers/selectedProduct';
 import voucher           from '../reducers/voucher';
+import flash             from '../reducers/flash';
 
 const defaultInitialState = new Immutable.Map();
 
@@ -17,7 +18,8 @@ export default function configStore(history, initialState = defaultInitialState)
         routing : routerReducer,
         products,
         selectedProduct,
-        voucher
+        voucher,
+        flash
     });
 
     let logger = createLogger({

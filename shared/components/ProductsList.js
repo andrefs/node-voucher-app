@@ -3,11 +3,13 @@ import Immutable from 'immutable';
 import {Link} from 'react-router';
 import Row  from 'react-bootstrap/lib/Row';
 import Col  from 'react-bootstrap/lib/Col';
+import Flash from './Flash';
 
 class Products extends Component {
 
     static propTypes = {
-        products: PropTypes.instanceOf(Immutable.List).isRequired
+        products: PropTypes.instanceOf(Immutable.List).isRequired,
+        flash: PropTypes.instanceOf(Immutable.Map).isRequired
     };
 
     componentDidMount() {
@@ -15,12 +17,13 @@ class Products extends Component {
     }
 
     render(){
-        const {products} = this.props;
+        const {products, flash} = this.props;
 
         return (
             <div className="container">
                 <h1>Products</h1>
                 <Link to={'/'}>Go back</Link>
+                <Flash flash={flash} />
                 <Row className="marketing">
                     {products.map(prod =>
                         <Col lg={6} key={prod.get('id')} >

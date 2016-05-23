@@ -1,6 +1,7 @@
 import '../utils/fetch';
 import {createAction } from 'redux-actions';
 import {push} from 'react-router-redux';
+import {showFlash} from './flash';
 
 import {
     VOUCHER_FETCH_REQUEST,
@@ -44,14 +45,20 @@ const useVoucher = function(code) {
         return fetch(`http://localhost:9667/api/vouchers/${code}`, null, opts)
         .then(response => {
             if(response.status === 204){
-                return {ok: true, message: 'Voucher used successfully'};
+                return {ok: true, message: 'Voucher used successfully.'};
+            }
+            if(response.status === 500){
+                throw 'Error trying to redeem voucher.';
             }
             return response.json();
          })
         .then(voucher => {
             dispatch(voucherUseSuccess(voucher));
+            dispatch(showFlash('success', 'Item was purchased successfully!'));
         })
-        .catch(error => {throw error});
+        .catch(error => {
+            dispatch(showFlash('error', error));
+        });
     };
 };
 

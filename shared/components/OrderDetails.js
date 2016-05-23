@@ -6,7 +6,7 @@ import ListGroup     from 'react-bootstrap/lib/ListGroup';
 class OrderDetails extends Component {
 
     render(){
-        const {originalPriceStr, voucherDiscount, finalPriceStr} = this.props;
+        const {originalPriceStr, voucherDiscount, finalPriceStr, voucherError} = this.props;
 
         return (
             <div>
@@ -18,7 +18,10 @@ class OrderDetails extends Component {
                     </li>
                     <li className="list-group-item">
                         <h4 className="list-group-item-heading">Voucher discount</h4>
-                        <p className="order-details-field text-right list-group-item-text">{voucherDiscount}</p>
+                        {voucherError ?
+                            <p className="danger text-right">Something went wrong: {voucherError.get('message')}</p> :
+                            <p className="order-details-field text-right list-group-item-text">{voucherDiscount}</p>
+                        }
                     </li>
                     <li className="list-group-item">
                         <h4 className="list-group-item-heading">Final price</h4>
