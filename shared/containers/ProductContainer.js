@@ -3,7 +3,7 @@ import {connect}            from 'react-redux';
 import Product from '../components/Product';
 import {setSelectedProduct} from '../actions/selectedProduct';
 import {bindActionCreators} from 'redux'
-import {fetchVoucher, useVoucher} from '../actions/voucher';
+import {fetchVoucher, useVoucher} from '../actions/currentVoucher';
 
 @connect(
     mapStateToProps,
@@ -34,7 +34,7 @@ function mapStateToProps(state, ownProps) {
     return {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
-        voucher:  state.get('voucher'),
+        currentVoucher:  state.get('currentVoucher'),
         flash: state.get('flash'),
         config: state.get('config')
     }

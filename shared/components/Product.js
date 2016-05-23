@@ -17,7 +17,7 @@ import Flash from './Flash';
 class Product extends Component {
     static propTypes = {
         selectedProduct: PropTypes.instanceOf(Immutable.Map).isRequired,
-        voucher: PropTypes.instanceOf(Immutable.Map).isRequired
+        currentVoucher: PropTypes.instanceOf(Immutable.Map).isRequired
     };
 
     onSubmit = (e) => {
@@ -32,36 +32,36 @@ class Product extends Component {
     onClick = (e) => {
         e.preventDefault();
         const {apiBaseURL, apiToken} = this.props;
-        const {voucher} = this.props;
-        if(!voucher){ return; }
-        this.props.useVoucher(apiBaseURL, apiToken, voucher.get('code'));
+        const {currentVoucher} = this.props;
+        if(!currentVoucher){ return; }
+        this.props.useVoucher(apiBaseURL, apiToken, currentVoucher.get('code'));
     }
 
     render(){
-        const {selectedProduct, voucher, flash} = this.props;
+        const {selectedProduct, currentVoucher, flash} = this.props;
 
         const originalPrice = (selectedProduct && selectedProduct.get('id')) ? (+selectedProduct.get('price')/100) : '';
         const originalPriceStr = originalPrice ? originalPrice.toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']) : '';
 
         let voucherDiscount = '';
-        if(voucher && voucher.get('code')){
-            if(voucher.get('isRate')){
-                voucherDiscount = voucher.get('value')+' %';
+        if(currentVoucher && currentVoucher.get('code')){
+            if(currentVoucher.get('isRate')){
+                voucherDiscount = currentVoucher.get('value')+' %';
             } else {
-                voucherDiscount = voucher.get('value').toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']);
+                voucherDiscount = currentVoucher.get('value').toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']);
             }
         }
 
         let finalPrice = originalPrice;
         if(voucherDiscount){
-            if(voucher.get('isRate')){
-                finalPrice = originalPrice - originalPrice*voucher.get('value')/100;
+            if(currentVoucher.get('isRate')){
+                finalPrice = originalPrice - originalPrice*currentVoucher.get('value')/100;
             } else {
-                finalPrice = originalPrice - voucher.get('value');
+                finalPrice = originalPrice - currentVoucher.get('value');
             }
         }
         const finalPriceStr = finalPrice ? finalPrice.toFixed(2)+' '+selectedProduct.getIn(['currency','symbol']) : '';
-        const voucherError = (voucher && voucher.get('error')) ? voucher : null;
+        const voucherError = (currentVoucher && currentVoucher.get('error')) ? currentVoucher : null;
 
         return (
             <div className="container">

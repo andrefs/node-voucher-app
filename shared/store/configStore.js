@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import {combineReducers} from 'redux-immutable';
 import products          from '../reducers/products';
 import selectedProduct   from '../reducers/selectedProduct';
-import voucher           from '../reducers/voucher';
+import currentVoucher    from '../reducers/currentVoucher';
 import flash             from '../reducers/flash';
 import config            from '../reducers/config';
 import campaigns         from '../reducers/campaigns';
@@ -20,7 +20,7 @@ export default function configStore(history, initialState = defaultInitialState)
         routing : routerReducer,
         products,
         selectedProduct,
-        voucher,
+        currentVoucher,
         flash,
         config,
         campaigns
