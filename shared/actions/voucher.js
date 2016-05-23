@@ -13,12 +13,11 @@ import {
     VOUCHER_USE_FAILURE
 } from '../constants';
 
-
-const fetchVoucher = function(code) {
+const fetchVoucher = function(baseURL, token, code){
     return (dispatch) => {
         dispatch(voucherFetchRequest());
 
-        return fetch(`http://localhost:9667/api/vouchers/${code}`)
+        return fetch(baseURL+'/api/vouchers/'+code, token)
         .then(response => response.json())
         .then(voucher => {
             dispatch(voucherFetchSuccess(voucher));
@@ -30,7 +29,7 @@ const fetchVoucher = function(code) {
 const voucherFetchSuccess = createAction(VOUCHER_USE_SUCCESS);
 const voucherFetchRequest = createAction(VOUCHER_USE_REQUEST);
 
-const useVoucher = function(code) {
+const useVoucher = function(baseURL, token, code) {
     return (dispatch) => {
         dispatch(voucherUseRequest());
         const opts = {
@@ -42,7 +41,7 @@ const useVoucher = function(code) {
             body: JSON.stringify({action: 'use'})
         };
 
-        return fetch(`http://localhost:9667/api/vouchers/${code}`, null, opts)
+        return fetch(baseURL+'/api/vouchers/'+code, token, opts)
         .then(response => {
             if(response.status === 204){
                 return {ok: true, message: 'Voucher used successfully.'};

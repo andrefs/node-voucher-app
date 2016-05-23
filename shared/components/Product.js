@@ -22,17 +22,19 @@ class Product extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        const {apiBaseURL, apiToken} = this.props;
         const voucherCode = this.refs.code.value.toUpperCase();
         if(voucherCode !== ''){
-            this.props.fetchVoucher(voucherCode);
+            this.props.fetchVoucher(apiBaseURL, apiToken, voucherCode);
         }
     }
 
     onClick = (e) => {
         e.preventDefault();
+        const {apiBaseURL, apiToken} = this.props;
         const {voucher} = this.props;
         if(!voucher){ return; }
-        this.props.useVoucher(voucher.get('code'));
+        this.props.useVoucher(apiBaseURL, apiToken, voucher.get('code'));
     }
 
     render(){

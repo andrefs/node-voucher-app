@@ -10,6 +10,7 @@ import products          from '../reducers/products';
 import selectedProduct   from '../reducers/selectedProduct';
 import voucher           from '../reducers/voucher';
 import flash             from '../reducers/flash';
+import config            from '../reducers/config';
 
 const defaultInitialState = new Immutable.Map();
 
@@ -19,7 +20,8 @@ export default function configStore(history, initialState = defaultInitialState)
         products,
         selectedProduct,
         voucher,
-        flash
+        flash,
+        config
     });
 
     let logger = createLogger({

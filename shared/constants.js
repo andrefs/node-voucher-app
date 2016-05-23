@@ -16,3 +16,5 @@ export const FLASH_SHOW_SUCCESS     = 'FLASH_SHOW_SUCCESS';
 export const FLASH_SHOW_INFO        = 'FLASH_SHOW_INFO';
 export const FLASH_SHOW_WARNING     = 'FLASH_SHOW_WARNING';
 export const FLASH_DISMISS          = 'FLASH_DISMISS';
+
+export const LOAD_CONFIG = 'LOAD_CONFIG';

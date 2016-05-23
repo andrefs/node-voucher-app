@@ -10,8 +10,8 @@ import {bindActionCreators} from 'redux'
 )
 class ProductsListContainer extends Component {
     componentWillMount() {
-        const {dispatch} = this.props;
-        dispatch(fetchProducts());
+        const {dispatch, config} = this.props;
+        dispatch(fetchProducts(config.get('apiBaseURL'), config.get('apiToken')));
     }
 
     render(){
@@ -25,7 +25,8 @@ function mapStateToProps(state) {
     return {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
-        flash: state.get('flash')
+        flash: state.get('flash'),
+        config: state.get('config')
     }
 }
 

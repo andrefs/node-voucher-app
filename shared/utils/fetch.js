@@ -1,12 +1,16 @@
 import 'isomorphic-fetch';
+import * as qs from 'querystring';
 
 let isoFetch = global.fetch;
 
 global.fetch = function (url, token, opts = {}){
-    if(!token){ return isoFetch(url, opts); }
+console.log('XXXXXXXX', arguments);
+    var params = opts.params || {};
+    delete opts.params;
 
-    if(!opts.headers){ opts.headers = new Headers(); }
-    opts.headers.append('Authorization', `Bearer ${token}`);
+    if(token){ params.token = token; }
+    const query = qs.stringify(params);
+    if(query){ url+='?'+query; }
 
     return isoFetch(url, opts);
 }

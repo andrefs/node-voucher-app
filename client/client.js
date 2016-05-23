@@ -6,11 +6,14 @@ import configStore             from '../shared/store/configStore';
 import {syncHistoryWithStore}  from 'react-router-redux'
 import {Provider}              from 'react-redux';
 import Immutable               from 'immutable';
+import {loadConfig}            from '../shared/actions/config';
+
 
 const initialState = Immutable.fromJS(window.__INITIAL_STATE__);
 
 const store = configStore(browserHistory,initialState);
 //const redirectPath = store.getState().getIn(['routing', 'locationBeforeTransitions','query','redirect']);
+store.dispatch(loadConfig(window.__CONFIG__));
 
 const history = syncHistoryWithStore(browserHistory, store, {
     selectLocationState: state => state.get('routing').toJS()

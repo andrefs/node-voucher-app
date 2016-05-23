@@ -74,6 +74,10 @@ app.use(function(req, res){
             res.render('index.hbs',{
                 layout       : false,
                 html         : html,
+                config       : JSON.stringify({
+                    apiBaseURL: 'http://'+config.api.host+':'+config.api.port,
+                    apiToken: config.api.token
+                }),
                 initialState : JSON.stringify(initialState)
             });
         }

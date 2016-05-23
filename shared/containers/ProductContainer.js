@@ -20,10 +20,12 @@ class ProductContainer extends Component {
     }
 
     render(){
-        const {selectedProduct} = this.props;
+        const {selectedProduct, config} = this.props;
+        const apiBaseURL = config.get('apiBaseURL');
+        const apiToken = config.get('apiToken');
 
         return (
-            <Product {...this.props} selectedProduct={selectedProduct} />
+            <Product {...this.props} selectedProduct={selectedProduct} apiBaseURL={apiBaseURL} apiToken={apiToken} />
         );
     }
 }
@@ -33,7 +35,8 @@ function mapStateToProps(state, ownProps) {
         products: state.get('products'),
         selectedProduct:  state.get('selectedProduct'),
         voucher:  state.get('voucher'),
-        flash: state.get('flash')
+        flash: state.get('flash'),
+        config: state.get('config')
     }
 }
 

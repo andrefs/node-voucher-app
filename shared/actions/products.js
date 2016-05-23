@@ -8,11 +8,11 @@ import {
     PRODUCTS_FETCH_FAILURE
 } from '../constants';
 
-const fetchProducts = function() {
+const fetchProducts = function(baseURL, token){
     return (dispatch) => {
         dispatch(productsRequest());
 
-        return fetch(`http://localhost:9667/api/products/`)
+        return fetch(baseURL+'/api/products/', token)
         .then(response => response.json())
         .then(products => {
             dispatch(productsSuccess(products));

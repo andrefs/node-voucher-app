@@ -7,8 +7,8 @@ module.exports = function(app){
     let router = express.Router();
 
 
-    //router.get('/:code', checkAuth({read:['vouchers']}), function(req, res){
-    router.get('/:code', function(req, res){
+    router.get('/:code', checkAuth({read:['vouchers']}), function(req, res){
+    //router.get('/:code', function(req, res){
         const query = {
             code: req.params.code
         };
@@ -48,8 +48,8 @@ module.exports = function(app){
         });
     });
 
-    //router.patch('/:code', checkAuth({write:['vouchers']}), function(req, res){
-    router.patch('/:code', function(req, res){
+    router.patch('/:code', checkAuth({write:['vouchers']}), function(req, res){
+    //router.patch('/:code', function(req, res){
         if(req.body.action === 'use'){
             Voucher.use(req.params.code, (err) => {
                 if(err){
