@@ -7,6 +7,18 @@ module.exports = function(app){
     let router = express.Router();
 
 
+    router.get('/', checkAuth({read:['vouchers']}), function(req, res){
+		const offset     = 0;
+		const limit      = 10;
+		const lean       = true;
+		const leanWithId = true;
+		const populate   = {path:'campaign'};
+		Voucher.paginate({},{offset, limit, populate, lean, leanWithId}, function(err, result){
+		    if(err){ res.send(err); }
+		    res.json(result.docs);
+		});
+    });
+
     router.get('/:code', checkAuth({read:['vouchers']}), function(req, res){
     //router.get('/:code', function(req, res){
         const query = {

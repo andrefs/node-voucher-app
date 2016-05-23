@@ -12,6 +12,7 @@ import currentVoucher    from '../reducers/currentVoucher';
 import flash             from '../reducers/flash';
 import config            from '../reducers/config';
 import campaigns         from '../reducers/campaigns';
+import vouchers          from '../reducers/vouchers';
 
 const defaultInitialState = new Immutable.Map();
 
@@ -23,7 +24,8 @@ export default function configStore(history, initialState = defaultInitialState)
         currentVoucher,
         flash,
         config,
-        campaigns
+        campaigns,
+        vouchers
     });
 
     let logger = createLogger({

@@ -5,6 +5,7 @@ import Start   from './components/Start';
 import ProductsListContainer from './containers/ProductsListContainer';
 import ProductContainer      from './containers/ProductContainer';
 import CampaignsListContainer from './containers/CampaignsListContainer';
+import VouchersListContainer from './containers/VouchersListContainer';
 
 export default function routes(store) {
 
@@ -13,9 +14,10 @@ export default function routes(store) {
     return (
         <Route path='/' component={App} >
             <IndexRoute component={Start} />
-            <Route path='/products'    component={ProductsListContainer} />
-            <Route path='/buy/:id' component={ProductContainer}      />
-            <Route path='/campaigns'    component={CampaignsListContainer} />
+            <Route path='/products'  component={ProductsListContainer}  />
+            <Route path='/buy/:id'   component={ProductContainer}       />
+            <Route path='/campaigns' component={CampaignsListContainer} />
+            <Route path='/vouchers'  component={VouchersListContainer}  />
         </Route>
     );
 };

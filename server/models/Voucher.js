@@ -1,5 +1,8 @@
 import mongoose  from 'mongoose';
+import pagPlugin from 'mongoose-paginate';
 import Campaign  from './Campaign';
+
+mongoose.plugin(pagPlugin);
 
 var VoucherSchema = mongoose.Schema({
     code: {
