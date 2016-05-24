@@ -6,8 +6,8 @@ Currently it is still very much a work in progress.
 
 ## Installation
 
-    git clone https://github.com/andrefs/node-catequil.git
-    cd node-catequil
+    git clone https://github.com/andrefs/node-voucher-app.git
+    cd node-voucher-app
     npm install
 
 ## Running
@@ -24,7 +24,7 @@ and
 
 ## Dependencies
 
-Right now, `node-catequil` stands on top of many giants' shoulders,
+Right now, `node-voucher-app` stands on top of many giants' shoulders,
 including:
 
 * ES2015
