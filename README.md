@@ -1,5 +1,7 @@
 # node-voucher-app
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/andrefs/node-voucher-app.svg)](https://greenkeeper.io/)
+
 `node-voucher-app` is a  demo app consisting of a voucher API and a simple web frontend to use it. It is written in Express + MongoDB + React + Redux.
 
 Currently it is still very much a work in progress.
